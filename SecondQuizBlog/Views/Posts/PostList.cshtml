@@ -1,0 +1,19 @@
+﻿@model List<ListPostViewModel>
+@{
+    ViewData["Title"] = "PostList";
+}
+
+@foreach (var item in Model)
+{
+    <div class="card mb-3">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@item.Title</h5>
+            <p class="card-text">@item.Detail</p>
+            <p class="card-text"><small class="text-muted">@item.Category.Name</small></p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+}
+
+
