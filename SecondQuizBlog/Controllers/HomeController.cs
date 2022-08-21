@@ -15,12 +15,7 @@ namespace SecondQuizBlog.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            return RedirectToAction("PostList", "Posts", new {page = 1, pageSize = 2});
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

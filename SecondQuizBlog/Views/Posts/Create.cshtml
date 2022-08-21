@@ -4,20 +4,28 @@
 }
 
 <h1>Create</h1>
-<form asp-controller="Posts" asp-action="Create" method="post">
+<form asp-controller="Posts" asp-action="Create" method="post" enctype="multipart/form-data">
     
     <div class="mb-3">
-        <select class="form-select" asp-items="@ViewBag.selectList" asp-for="@Model.CategoryId">
+        <select class="form-select" asp-items="@ViewBag.selectList" asp-for="CategoryId">
         </select>
     </div>
     
     <div class="form-group mb-3">
         <label asp-for="@Model.Title">Başlık Alanı Giriniz</label>
-        <input class="form-control" asp-for="@Model.Title"/>
+        <input class="form-control" asp-for="Title"/>
+        <span class="text-danger" asp-validation-for="Title"></span>
     </div>
+
     <div class="form-group mb-3">
         <label asp-for="@Model.ContentText">İçerik giriniz</label>
-        <input class="form-control" asp-for="@Model.ContentText"/>
+        <textarea class="form-control" asp-for="ContentText"></textarea>
+        <span class="text-danger" asp-validation-for="ContentText"></span>
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="@Model.ImageUrl">Fotğraf seçiniz</label>
+        <input type="file" name="photo" class="form-control" asp-for="ImageUrl"/>
+        <span class="text-danger" asp-validation-for="ImageUrl"></span>
     </div>
     <button type="submit" class="btn btn-primary">Kaydet</button>
 </form>

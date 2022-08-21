@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using SecondQuizBlog.Context;
 using SecondQuizBlog.Mapping;
 using SecondQuizBlog.Repository;
@@ -18,6 +19,7 @@ builder.Services.AddAutoMapper(typeof(MapProfile));
 
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddSingleton<IFileProvider>(new PhysicalFileProvider(Directory.GetCurrentDirectory()));
 
 
 var app = builder.Build();
