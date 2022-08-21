@@ -1,0 +1,31 @@
+﻿@model ListPostViewModel
+@{
+    ViewData["Title"] = "PostDetail";
+}
+
+<h1>PostDetail</h1>
+<div class="card text-dark bg-white border-danger mt-2">
+    <div class="card-header text-center border-danger">
+        <h1 class="card-title">@Model.Title</h1>
+    </div>
+    <img src="/images/@Model.ImageUrl" class="card-img-top">
+    <div class="card-body bg-white">
+        <p class="card-text">@Model.ContentText</p>
+    </div>
+    <div class="card-footer border-danger">
+        <h3 style="display: inline-block;">
+            <span class="badge rounded-pill bg-white text-dark">
+                Post Tarih: @Model.CreatedDate.Day.@Model.CreatedDate.Month.@Model.CreatedDate.Year
+            </span>
+        </h3>
+        <h3 style="display: inline-block;">
+            <span class="badge rounded-pill bg-white text-dark">
+                Kategori: @Model.Category.Name
+            </span>
+        </h3>
+        <div class="float-end">
+            <a class="btn btn-primary btn-sm" asp-controller="Posts" asp-action="Delete" asp-route-id="@Model.Id">Sil</a>
+            <a class="btn btn-primary btn-sm mx-2" asp-controller="Posts" asp-action="Update" asp-route-id="@Model.Id">Güncelle</a>
+        </div>
+    </div>
+</div>

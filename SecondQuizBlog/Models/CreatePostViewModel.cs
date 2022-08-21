@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SecondQuizBlog.Models
 {
     public class CreatePostViewModel
     {
+
         [StringLength(20,ErrorMessage = "Başlık alanı en fazla 20 karakter olmalıdır.")]
         [Required(ErrorMessage = "Başlık alanı doldurmak zorunludur")]
         public string Title { get; set; }
@@ -14,7 +16,7 @@ namespace SecondQuizBlog.Models
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
         [Required(ErrorMessage = "Fotoğraf seçmek doldurmak zorunludur")]
-        public string ImageUrl { get; set; }
+        public IFormFile Image { get; set; }
         
         public int CategoryId { get; set; }
 

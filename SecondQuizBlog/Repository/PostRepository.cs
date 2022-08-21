@@ -42,14 +42,23 @@ namespace SecondQuizBlog.Repository
             _context.SaveChanges();
         }
 
-        public List<Post> PostsWithCategory(int page, int pageSize)
+        /*public List<Post> PostsWithCategory(int page, int pageSize)
         {
             IQueryable<Post> query;
             query = _context.Posts.Include(x => x.Category).OrderByDescending(y => y.CreatedDate);
             int totalCount = query.Count();
             var postList = query.Skip((pageSize * (page - 1))).Take(pageSize).ToList();
             return postList;
+        }*/
+
+        public List<Post> PostsWithCategory()
+        {
+            return _context.Posts.Include(x => x.Category).OrderByDescending(y => y.CreatedDate).ToList();
         }
-        
+
+        public Post GetByIdWithCategory(int id)
+        {
+            return _context.Posts.Include(x => x.Category).First(x => x.Id == id);
+        }
     }
 }

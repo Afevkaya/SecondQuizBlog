@@ -9,6 +9,8 @@ namespace SecondQuizBlog.Repository
         void Add(Post post);
         void Update(Post post);
         void Delete(int id);
-        List<Post> PostsWithCategory(int page, int pageSize);
+        /*List<Post> PostsWithCategory(int page, int pageSize);*/
+        List<Post> PostsWithCategory();
+        Post GetByIdWithCategory(int id);
     }
 }

@@ -3,30 +3,45 @@
     ViewData["Title"] = "PostList";
 }
 
-@foreach (var item in Model)
-{
-    <div class="card text-dark bg-white border-danger mt-2">
-        <div class="card-header text-center border-danger">
-            <h1 class="card-title">@item.Title</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                <img class="card-img-top" src="/images/@item.ImageUrl" width="350" height="350" />
+                <h3>@item.Title</h3>
+                <h6>@item.Category.Name</h6>
+            </div>
+            <div class="card-body">
+                <p class="truncate">@item.ContentText</p>
+            </div>
+            <div class="card-footer border-danger">
+                <h3 style="display: inline-block;">
+                    <span class="badge rounded-pill bg-white text-dark">
+                        Post Tarih: @item.CreatedDate.Day.@item.CreatedDate.Month.@item.CreatedDate.Year
+                    </span>
+                </h3>
+                <h3 style="display: inline-block;">
+                    <span class="badge rounded-pill bg-white text-dark">
+                        Kategori: @item.Category.Name
+                    </span>
+                </h3>
+                <a class="btn btn-primary btn-sm float-end" asp-controller="Posts" asp-action="PostDetail" asp-route-id="@item.Id">Detay sayfasına git</a>
+            </div>
         </div>
-        <img src="/images/@item.ImageUrl" class="card-img-top">
-        <div class="card-body bg-white">
-            <p class="card-text">@item.ContentText</p>
-        </div>
-        <div class="card-footer border-danger">
-            <h3 style="display: inline-block;">
-                <span class="badge rounded-pill bg-white text-dark">
-                    Post Tarih: @item.CreatedDate.Day.@item.CreatedDate.Month.@item.CreatedDate.Year
-                </span>
-            </h3>
-            <h3 style="display: inline-block;">
-                <span class="badge rounded-pill bg-white text-dark">
-                    Kategori: @item.Category.Name
-                </span>
-            </h3>
-            <a href="#" class="btn btn-primary btn-sm float-end">Detay sayfasına git</a>
-        </div>
-    </div>
-}
+
+    }
+</div>
 
 
+<style>
+
+    .truncate {
+        display: inline-block;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
