@@ -32,7 +32,23 @@
         </div>
 
     }
+
+
 </div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item @(ViewBag.page==1 ? "disabled" : "")"><a asp-controller="Posts" asp-action="PostList" asp-route-page="@(ViewBag.page-1)" class="page-link">Previous</a></li>
+        
+        @for (int item=1; item<=@ViewBag.totalPage;item++)
+        {
+            <li class="page-item"><a asp-controller="Posts" asp-action="PostList" asp-route-page="@item" class="page-link">@(item.ToString())</a></li>
+        }
+
+
+        <li class="page-item @(ViewBag.Page == ViewBag.totalPage ? "disabled" : "")"><a asp-controller="Posts" asp-action="PostList" asp-route-page="@(ViewBag.page+1)" class="page-link">Next</a></li>
+    </ul>
+</nav>
+
 
 
 <style>

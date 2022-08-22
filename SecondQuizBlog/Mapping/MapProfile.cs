@@ -11,6 +11,7 @@ namespace SecondQuizBlog.Mapping
             CreateMap<Post, ListPostViewModel>();
             CreateMap<Category, CategoryViewModel>();
             CreateMap<CreatePostViewModel, Post>();
+            CreateMap<UpdatePostViewModel, Post>().ReverseMap();
         }
     }
 }

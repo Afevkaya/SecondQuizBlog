@@ -16,7 +16,7 @@ namespace SecondQuizBlog.Controllers
         public IActionResult Index()
         {
             /*new {page = 1, pageSize = 2}*/
-            return RedirectToAction("PostList", "Posts");
+            return RedirectToAction("PostList", "Posts", new { page = 1});
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
